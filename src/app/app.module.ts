@@ -22,6 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AddHotelComponent } from './admin/add-hotel/add-hotel.component';
 import { DeleteHotelComponent } from './admin/delete-hotel/delete-hotel.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+
 
 const routes:Routes = [
   {path:'', component: HomeComponent},
@@ -34,6 +36,7 @@ const routes:Routes = [
   {path:'menu', component: MenuComponent,canActivate:[AuthGuard]},
   {path:'cart', component: CartComponent},
   {path:'adminLogin', component: AdminLoginComponent},
+  {path:'confirmation', component: ConfirmationComponent},
   
 ]
 @NgModule({
@@ -51,6 +54,7 @@ const routes:Routes = [
     AdminLoginComponent,
     AddHotelComponent,
     DeleteHotelComponent,
+    ConfirmationComponent,
   
   ],
   imports: [
@@ -61,14 +65,16 @@ const routes:Routes = [
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    ToastrModule
-
+    ToastrModule,
   ],
   providers: [{
     provide : HTTP_INTERCEPTORS,
     useClass : JwtAuthInterceptor,
     multi : true
   }],
+  // schemas: [
+  //   CUSTOM_ELEMENTS_SCHEMA
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

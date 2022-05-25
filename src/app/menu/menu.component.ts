@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Url } from '../model';
+
 
 export class menudb{
   constructor(
@@ -39,7 +41,7 @@ export class MenuComponent implements OnInit {
   getMenuData(){
     const category = localStorage.getItem("category")
     const hotelName = localStorage.getItem("hotelName")
-    this.http.get<any>("http://localhost:3000/"  +category +"/" + hotelName).subscribe(
+    this.http.get<any>(Url.address +category +"/" + hotelName).subscribe(
       response=>{
        
         console.log(response);

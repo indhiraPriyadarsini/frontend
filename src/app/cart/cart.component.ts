@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Url } from '../model';
+
 
 @Component({
   selector: 'app-cart',
@@ -57,6 +59,7 @@ export class CartComponent implements OnInit {
 
   order(){
    alert("Order Placed")
+   this.router.navigate(['/confirmation'])
 
 
 

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { TokenService } from '../core/_services/token.service';
+import { Url } from '../model';
+
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
   // this.auth.login(this.formdata.email,this.formdata.password)
    
-    this.http.post('http://localhost:3000/login', {email:data.email,password:data.password})
+    this.http.post(Url.address+ 'login', {email:data.email,password:data.password})
 
     .subscribe(
      (res:any)=>{
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
         this.token.saveAuthToken(res.authToken),
         this.token.saveRefreshToken(res.refreshToken),
         // this.toaster.success('Logout Successful');
+        alert("Login Successful")
         this.router.navigate([''])
       },
       (error)=>{

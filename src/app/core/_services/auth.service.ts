@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Url } from 'src/app/model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +30,10 @@ export class AuthService {
  
 
   address(doorNo:BigInteger,street:string,area:string,city:string,state:string,pincode:string,nearestLandmark:string){
-    return this.http.post<{idToken:string}>(
-      'http://localhost:3000/address', 
+    return this.http.post<{idToken:string}>(Url.address+'address', 
     {doorNo:doorNo,street:street,area:area,city:city,state:state,pincode:pincode,nearestLandmark:nearestLandmark}
 
     );
   }
-  // LogoutClick() {
-  //   this.auth.userLogout();
-  //   this.toaster.success('Logout Successful');
-  // }
+
 }

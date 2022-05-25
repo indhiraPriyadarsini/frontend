@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HotelsRoutingModule } from './hotels-routing.module';
 import { HotelsComponent } from './hotels.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
@@ -15,6 +16,12 @@ import { HotelsComponent } from './hotels.component';
     FormsModule,
     ReactiveFormsModule
 
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  exports:[
+    HotelsComponent
   ]
 })
 export class HotelsModule { }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Url } from '../model';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   
   register(data:any){
     console.log(data);
-    this.http.post("http://localhost:3000/register",{username:data.username,email:data.email,password:data.password})
+    this.http.post(Url.address+"register",{username:data.username,email:data.email,password:data.password})
     .subscribe(
       (msg)=>{
       console.log(msg+"success")

@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Url } from '../model';
+
 export class hotelData {
   constructor(
     public hotelName: string,
@@ -33,7 +35,7 @@ export class HotelsComponent implements OnInit {
   }
   getHotel(){
     const category = localStorage.getItem("category")
-    this.http.get<any>('http://localhost:3000/hotelData/' + category).subscribe(
+    this.http.get<any>(Url.address+ 'hotelData/' + category).subscribe(
       response => {
         console.log(response);
         this.hoteldata = response;

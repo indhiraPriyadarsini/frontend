@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Url } from '../model';
+
 
 @Component({
   selector: 'app-category',
