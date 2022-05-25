@@ -1,3 +1,12 @@
 .navbar-custom {
     background-color: #DD4A48;
 }
+
+.navbar-item{
+    vertical-align: middle;
+}
+
+h1{
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+  }

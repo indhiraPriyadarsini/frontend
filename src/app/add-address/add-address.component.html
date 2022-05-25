@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div class="sticky-top">
+<img src="assets\address_page\address.png" alt="delivery arrived" class="img-fluid" style="float: left;position: absolute; padding-top:200px;width:40vw;height:100vh">
+</div>
+ <section class="address-block bg-color">
+    <div class="container">
+        <div class="row ">
+            <div class="col address-sec">
+                <h2 class="text-center text-danger">Add Your Address here</h2>
+                <form class="address-form" action="" #f="ngForm" novalidate (ngSubmit)="f.form.valid&&onSubmit()">
+                
+                <div class="form-group">
+                    <label for="" class="text-uppercase">door no:</label>
+                    <input type="email"  class="form-control" name="Door Number"  id="" placeholder="Door Number" [(ngModel)]="formdata.doorNo"  #doorNo = "ngModel" required >
+                    <span class="text-danger" *ngIf="this.submit&&doorNo.errors?.['required']" >
+                        Door Number is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-uppercase">street:</label>
+                    <input type="email"  class="form-control" name="Door Number"  id="" placeholder="Street Name" [(ngModel)]="formdata.street"  #street = "ngModel" required>
+                    <span class="text-danger" *ngIf="this.submit&&street.errors?.['required']" >
+                        Street Name is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-uppercase">area:</label>
+                    <input type="email"  class="form-control" name="Door Number"  id="" placeholder="Area" [(ngModel)]="formdata.area"  #area = "ngModel" required>
+                    <span class="text-danger" *ngIf="this.submit&&area.errors?.['required']"  >
+                        Area Name is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-uppercase">city:</label>
+                    <input type="email"  class="form-control" name="Door Number"  id="" placeholder="City" [(ngModel)]="formdata.city"  #city = "ngModel" required>
+                    <span class="text-danger"  *ngIf="this.submit&&city.errors?.['required']" >
+                        City Name is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-uppercase">pincode:</label>
+                    <input type=""  class="form-control" name="Door Number"  id="" placeholder="Pincode" [(ngModel)]="formdata.pincode"  #pincode = "ngModel" required>
+                    <span class="text-danger"  *ngIf="this.submit&&pincode.errors?.['required']" >
+                        Pincode is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="" class="text-uppercase">state:</label>
+                    <input type="email"  class="form-control" name="Door Number"  id="" placeholder="State" [(ngModel)]="formdata.state"  #state = "ngModel" required>
+                    <span class="text-danger"  *ngIf="this.submit&&state.errors?.['required']" >
+                        State name is required.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" class="text-uppercase">Nearest Landmark:</label>
+                    <input  class="form-control" type=""  name="password" placeholder="Nearest Landmark" id="">
+                </div>
+                <div class="form-group">
+                    <!-- <div  class="text-center" >
+                        <div class="spinner-border text-primary " role="status">
+                        <span class="sr-only">Loading...</span>
+                        </div>
+                    </div> -->
+                    <span class="text-danger"  >
+                    <p ></p>
+                    </span>
+                    <input  type="submit" class="btn btn-address bg-danger float-right"  value="submit" (click)="submit=true" >
+                </div>
+                <div class="clearfix"></div>
+                <!-- <div class="form-group">
+                Create new account ? Please <a  href="javascript:void(0);" routerLink="/register">Register</a>
+                </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>

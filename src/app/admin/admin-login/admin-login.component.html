@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@1,600&family=Playfair+Display:ital,wght@1,400;1,900&display=swap');
+ </style>
+ 
+ 
+
+ 
+<h2><strong style=" float:right; font-family: 'Playfair Display','serif';margin-right: 10%;margin-bottom: 0;">
+    Get your food served piping hot!
+</strong></h2>
+<img src="assets\login_page.png" alt="delivery arrived" style=" height:70vh; width:40vw;position: absolute; padding:20px;float: left;">
+<div>
+<section class="login-block bg-color">
+  <div class="container " style="background-color:#F5EEDC ;">
+      <div class="row ">
+          <div class="col login-sec">
+              <h2 class="text-center text-danger">Login Now</h2>
+              <form class="login-form" #loginData="ngForm" (ngSubmit)="login(loginData.value)" 
+         >
+         <div class="form-group">
+             <label class="text-uppercase">Email </label>
+             <input  type="email" name="email"  #email="ngModel" id="email"  value="" ngModel/>
+            </div>
+            <div class="form-group">
+             <label class="text-uppercase">Password </label>
+             <input type="password" name="password"  #password="ngModel" id="password"  value="" ngModel/>
+           </div>
+             <label class="text-uppercase" for="submit"></label>
+             <input class="btn btn-address bg-danger float-right" type="submit"   value="Login" ngModel/>
+ 
+         </form>
+          </div>
+      </div>
+  </div>
+</section>
+</div>

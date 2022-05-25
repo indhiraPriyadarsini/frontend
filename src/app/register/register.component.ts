@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,38 +9,33 @@ import { AuthService } from '../_services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  formdata = {name:"",email:"",password:""};
+  //formdata = {name:"",email:"",password:""};
   submit = false;
   errorMessage = " ";
   loading=false;
 
-  constructor(private auth:AuthService) { }
-
-  ngOnInit(): void {
-  }
-
-  onSubmit(){
+  constructor(private http:HttpClient, private router:Router) { }
+  
+  register(data:any){
+    console.log(data);
+    this.http.post("http://localhost:3000/register",{username:data.username,email:data.email,password:data.password})
+    .subscribe(
+      (msg)=>{
+      console.log(msg+"success")
+      this.router.navigate(['address'])
+    },(error)=>{
+      console.log(error)
+     // this.router.navigate(['address'])
+    })
+  
+     
     
-    this.loading=true;
-    this.auth.register(this.formdata.name,this.formdata.email,this.formdata.password)
-      .subscribe({
-        next:data=>{
-          //store token from response
-          this.auth.storeToken(data.idToken);
-          console.log('Registered idToken is '+data.idToken);
-        },
-        error:data=>{
-          if(data.error.error.message=="INVALID EMAIL"){
-            this.errorMessage = "Invalid Email"
-          }else if(data.error.error.message=="EMAIL_EXISTS"){
-            this.errorMessage = "Email Already Exists!";
-          }else{
-            this.errorMessage = "Unknown error";
-          }
-        }
-      }).add(()=>{
-        this.loading = false;
-        console.log('Registration successfull!');
-      })
+    
   }
-}
+  
+    
+  
+    ngOnInit(): void {
+    }
+  
+  }

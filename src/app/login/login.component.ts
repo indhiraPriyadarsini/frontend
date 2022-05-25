@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Data, Router } from '@angular/router';
+import { TokenService } from '../core/_services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -6,17 +9,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  formdata = {email:"",password:""};
+//  formdata = {email:"",password:""};
   submit =  false;
   loading = false;
   errorMessage = ""
-  constructor() { }
+  constructor(private http:HttpClient,
+              private router:Router , 
+              private token: TokenService
+              ) { }
 
   ngOnInit(): void {
   }
-  onSubmit(){
-    this.loading = true
+  login(data:any){
+    this.loading = true;
+  // this.auth.login(this.formdata.email,this.formdata.password)
+   
+    this.http.post('http://localhost:3000/login', {email:data.email,password:data.password})
+
+    .subscribe(
+     (res:any)=>{
+       // this.auth.storeToken(res.idToken);
+      // console.log(res);
+        this.token.saveAuthToken(res.authToken),
+        this.token.saveRefreshToken(res.refreshToken),
+        // this.toaster.success('Logout Successful');
+        this.router.navigate([''])
+      },
+      (error)=>{
+        console.log(error);
+        console.log("wrong credentials");
+        //this.router.navigate([''])
+        }
+  
+    )
     
   }
+
+  
 
 }
